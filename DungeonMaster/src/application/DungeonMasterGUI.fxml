@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Main">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <ImageView fitHeight="725.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/TitleScreen.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <BorderPane fx:id="mainMenu" prefHeight="600.0" prefWidth="800.0">
+         <center>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handlePlayButtonAction" text="Play">
+                     <HBox.margin>
+                        <Insets left="250.0" right="10.0" top="300.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="27.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleLeadBoardButtonAction" text="Leaderboards">
+                     <HBox.margin>
+                        <Insets left="50.0" top="300.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </center>
+         <bottom>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="326.0" mnemonicParsing="false" onAction="#handleBossFightButton" text="Boss Fight">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="27.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="infoWindow" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Player 1 Name: " textFill="#fcfcfc">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="29.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="100.0" top="250.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Player 2 Name: " textFill="#f8f6f6">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="29.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="100.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </left>
+         <right>
+            <VBox prefHeight="500.0" prefWidth="495.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="player1Name" prefHeight="25.0" prefWidth="274.0">
+                     <VBox.margin>
+                        <Insets right="150.0" top="250.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="player2Name" layoutX="10.0" layoutY="260.0" prefHeight="25.0" prefWidth="274.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="150.0" top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </right>
+         <bottom>
+            <HBox alignment="BOTTOM_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="BOTTOM_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleOKButton" text="OK">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="gameWindow" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <left>
+            <StackPane prefHeight="370.0" prefWidth="140.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="370.0" prefWidth="140.0">
+                     <children>
+                        <ImageView fitHeight="366.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/sidebar.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" layoutX="15.42724609375" layoutY="14.0">
+                           <children>
+                              <Label layoutX="16.0" layoutY="14.0" text="Instructions">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Text fill="#940101" strokeType="OUTSIDE" strokeWidth="0.0" text="Each player will take a turn to roll the dice. After the player reaches its new position it will be the next player's turn. The first player to reach the end will have a chance to fight the Dungeon Boss" textAlignment="CENTER" wrappingWidth="110.13671875">
+                                 <font>
+                                    <Font name="Calisto MT Italic" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+         </left>
+         <right>
+            <StackPane prefHeight="370.0" prefWidth="140.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="370.0" prefWidth="140.0">
+                     <children>
+                        <ImageView fitHeight="370.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/sidebar.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <VBox fx:id="diceBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="CENTER" text="Dice">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="33.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="diceLabel" text="0">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="96.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#handleRollButton" prefHeight="34.0" prefWidth="86.0" text="Roll">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="toTheBoss" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
+                     <children>
+                        <Label text="Congratulations" textAlignment="CENTER">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="winner" text="Player" textAlignment="CENTER">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="36.0" />
+                           </font>
+                        </Label>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Click on the button to proceed" textAlignment="CENTER" wrappingWidth="113.45703125">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="18.0" />
+                           </font>
+                        </Text>
+                        <Button mnemonicParsing="false" onAction="#handleContinueButton" text="Continue">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+         </right>
+         <bottom>
+            <StackPane prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="108.0" fitWidth="799.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/bottomBar.png" />
+                     </image>
+                  </ImageView>
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="player1" text="Player 1">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="19.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ImageView fitHeight="7.0" fitWidth="143.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Images/Player%201.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Label fx:id="posLabel1" text="Pos: 1">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="29.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="player2" text="Player 2">
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="7.0" fitWidth="143.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Images/player%202.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Label fx:id="posLabel2" text="Pos: 1">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="29.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleMainMenuButton" prefHeight="42.0" prefWidth="129.0" text="Main Menu">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="219.0" top="47.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+         </bottom>
+         <top>
+            <Pane prefHeight="130.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <StackPane prefHeight="370.0" prefWidth="520.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="370.0" prefWidth="520.0">
+                     <children>
+                        <ImageView fitHeight="367.0" fitWidth="587.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/centralgamebgnd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space1p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space1p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space2p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space2p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="10.0" layoutY="84.0" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space3p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space3p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="10.0" layoutY="84.0" prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space4p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space4p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="10.0" layoutY="230.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space5p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space5p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="114.0" layoutY="230.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space6p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space6p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="114.0" layoutY="303.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space7p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space7p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="218.0" layoutY="303.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space8p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space8p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="322.0" layoutY="303.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space9p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space9p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="322.0" layoutY="230.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space10p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space10p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="322.0" layoutY="157.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space11p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space11p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="218.0" layoutY="157.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space12p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space12p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="218.0" layoutY="84.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space13p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space13p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="218.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space14p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space14p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="322.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="73.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/black%20sqr.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="space15p1" fitHeight="12.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/Player%201.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="space15p2" fitHeight="34.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../../Images/player%202.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </StackPane>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="leaderboard" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <top>
+            <Pane prefHeight="154.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+         </top>
+         <left>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#hableDeleteSelectedButton" text="Delete Selected">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="30.0" right="180.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleReturnButton" text="Return">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="20.0" right="40.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <TableView fx:id="playerList" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="bossFight" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <center>
+            <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane fx:id="stage0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="359.0" fitWidth="481.0" layoutX="160.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/Boss%20Normal.png" />
+                           </image></ImageView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="stage3" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="412.0" fitWidth="479.0" layoutX="161.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/Boss%20EA.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="stage2" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="356.0" fitWidth="478.0" layoutX="162.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/Boss%20NA.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="stage1" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="358.0" fitWidth="480.0" layoutX="162.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/Boss%20CD.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+         </center>
+         <bottom>
+            <StackPane prefHeight="77.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="314.0" fitWidth="798.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/bottomBar.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleAttckButton" text="Attack">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="29.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="125.0" top="23.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="80.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleBlockButton" text="Block">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="29.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="100.0" top="23.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="198.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleEvadeButton" text="Evade">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="29.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="100.0" top="23.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+         </bottom>
+         <top>
+            <Pane prefHeight="144.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+      <Pane fx:id="bossInstructions" prefHeight="600.0" prefWidth="800.0" visible="false" StackPane.alignment="CENTER">
+         <children>
+            <VBox layoutY="140.0" prefHeight="462.0" prefWidth="800.0">
+               <children>
+                  <HBox layoutY="140.0" prefHeight="400.0" prefWidth="800.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="266.6">
+                           <children>
+                              <Label alignment="CENTER" text="Normal Attack" textFill="#fffdfd">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="36.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/Boss%20NA.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#f8f8f8" strokeType="OUTSIDE" strokeWidth="0.0" text="When the boss does a normal attack you must perform a block" textAlignment="CENTER" wrappingWidth="203.169921875">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="27.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="266.6">
+                           <children>
+                              <Label alignment="CENTER" text="Special Attack" textFill="#fffdfd">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="36.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/Boss%20EA.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#f8f8f8" strokeType="OUTSIDE" strokeWidth="0.0" text="When the boss does a special attack you must evade" textAlignment="CENTER" wrappingWidth="203.169921875">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="27.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="266.6">
+                           <children>
+                              <Label alignment="CENTER" text="Cooldown" textFill="#fffdfd">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="36.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/Boss%20CD.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#f8f8f8" strokeType="OUTSIDE" strokeWidth="0.0" text="When the boss is on cooldown is your chance to attack" textAlignment="CENTER" wrappingWidth="203.169921875">
+                                 <font>
+                                    <Font name="Calisto MT Bold Italic" size="27.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="60.0" prefWidth="800.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleStartButton" text="Start">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="22.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <BorderPane fx:id="infoWindowBB" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <bottom>
+            <HBox alignment="BOTTOM_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="BOTTOM_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleOKBBButton" text="OK">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+         <left>
+            <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Player 1 Name: " textFill="#fcfcfc">
+                     <font>
+                        <Font name="Calisto MT Bold Italic" size="29.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="100.0" top="250.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </left>
+         <right>
+            <VBox prefHeight="500.0" prefWidth="495.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="player1NameBB" prefHeight="25.0" prefWidth="274.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="150.0" top="250.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+      <Pane fx:id="victoryWindow" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <children>
+            <Label fx:id="result" layoutX="235.0" layoutY="243.0" text="Label" textFill="#fcfcfc">
+               <font>
+                  <Font name="Calisto MT Bold Italic" size="96.0" />
+               </font>
+            </Label>
+            <Button layoutX="669.0" layoutY="529.0" mnemonicParsing="false" onAction="#handleFinishButton" text="Finish">
+               <font>
+                  <Font name="Calisto MT Bold Italic" size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</StackPane>
