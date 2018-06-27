@@ -13,20 +13,20 @@ public class Dice {
 		this.max = max;
 	}
 	
-	synchronized public int roll1Dice() {
+	public int roll1Dice() {
 		number = dice.nextInt((max - min) + 1) + min;
 		
 		return number;
 	}
 	
-	synchronized public int roll2Dice() {
+	public int roll2Dice() {
 		number = (dice.nextInt((max - min) + 1) + min) +
 				(dice.nextInt((max - min) + 1) + min);
 		
 		return number;
 	}
 	
-	synchronized public int getNumber (){
+	public int getNumber (){
 		return number;
 	}
 }

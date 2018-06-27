@@ -32,7 +32,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 
-public class Main extends Application implements Initializable{
+public class Main extends Application implements Initializable {
 	
 	private int positionp1 = 1;
 	private boolean flag1 = false;
@@ -274,10 +274,6 @@ public class Main extends Application implements Initializable{
 			// Save the names of the players
 			Game.getGame().setPlayer1(new Player(player1Name.getText()));
 			Game.getGame().setPlayer2(new Player(player2Name.getText()));
-			Game.getGame().getPlayer1().setPositionTo(1);
-			Game.getGame().getPlayer2().setPositionTo(1);
-			Game.getGame().getPlayer1().setWinner(false);
-			Game.getGame().getPlayer2().setWinner(false);
 			// end
 			// change the names of the labels
 			player1.setText(Game.getGame().getPlayer1().getName());
@@ -335,6 +331,9 @@ public class Main extends Application implements Initializable{
 		gameWindow.setVisible(false);
 		//reset game data
 		Game.getGame().resetGame();
+		positionp1 = 1;
+		positionp2 = 1;
+		
 		//end
 		mainMenu.setVisible(true);
 	}
@@ -450,7 +449,7 @@ public class Main extends Application implements Initializable{
 		//end
 	}
 	
-	synchronized public void handleRollButton (ActionEvent e){
+	synchronized public void handleRollButton (ActionEvent e) throws InterruptedException{
 		ArrayList<ImageView> spacesP1 = new ArrayList<ImageView>();
 		spacesP1.add(space1p1);
 		spacesP1.add(space2p1);
@@ -487,9 +486,10 @@ public class Main extends Application implements Initializable{
 		
 		System.out.println("Roll button working");
 		int roll = Game.getGame().getDice().roll1Dice();
-		//notify game to continue
+		//notify game to continue and sleep for a few miliseconds;
 		Game.getGame().setWait(false);
 		Game.getGame().makeBoardGameResume();
+		Thread.sleep(100);
 		//end
 		//change player position on board
 		if (positionp2 == Game.getGame().getPlayer2().getPosition()) {
@@ -712,24 +712,6 @@ public class Main extends Application implements Initializable{
 				break;
 			}
 		}
-		//end
-		if(flag1 == true){
-			winner.setText("Player 1");
-			diceBox.setVisible(false);
-			toTheBoss.setVisible(true);
-			Game.getGame().getPlayer1().setWinner(false);
-			flag1 = false;
-		}
-		else if (flag2){
-			winner.setText("player 2");
-			diceBox.setVisible(false);
-			Game.getGame().setPlayer1(Game.getGame().getPlayer2());
-			toTheBoss.setVisible(true);
-			Game.getGame().getPlayer1().setWinner(false);
-			flag2 = false;
-		}
-		String s = Integer.toString(roll);
-		diceLabel.setText(s);
 		
 		if(Game.getGame().getPlayer1().isWinner() == true){
 			flag1 = true;
@@ -737,6 +719,30 @@ public class Main extends Application implements Initializable{
 		else if(Game.getGame().getPlayer2().isWinner() == true){
 			flag2 = true;
 		}
+		//end
+		if(flag1 == true){
+			winner.setText("Player 1");
+			diceBox.setVisible(false);
+			toTheBoss.setVisible(true);
+			Game.getGame().getPlayer1().setWinner(false);
+			flag1 = false;
+			Game.getGame().getPlayer1().setPositionTo(1);
+			positionp1 = 1;
+			positionp2 = 1;
+		}
+		else if (flag2){
+			winner.setText("player 2");
+			diceBox.setVisible(false);
+			Game.getGame().getPlayer2().setWinner(false);
+			flag2 = false;
+			Game.getGame().getPlayer2().setPositionTo(1);
+			Game.getGame().setPlayer1(Game.getGame().getPlayer2());
+			toTheBoss.setVisible(true);
+			positionp1 = 1;
+			positionp2 = 1;
+		}
+		String s = Integer.toString(roll);
+		diceLabel.setText(s);
 	}
 	
 	public void handleContinueButton (ActionEvent e){
@@ -780,6 +786,7 @@ public class Main extends Application implements Initializable{
 		//end
 		leaderboard.setVisible(true);
 		Game.getGame().getBoss().setHp(15);
+		Game.getGame().resetGame();
 	}
 	
 	public void hableDeleteSelectedButton (ActionEvent e) {

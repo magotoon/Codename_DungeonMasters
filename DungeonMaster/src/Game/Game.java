@@ -40,6 +40,8 @@ public class Game {
 	
 	public void resetGame () {
 		game = null;
+		player1 = null;
+		player2 = null;
 	}
 
 	public Player getPlayer1() {
